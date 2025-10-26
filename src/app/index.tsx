@@ -1,25 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
+import { Shop } from './Shop';
 
 export function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Testando meu primeiro app</Text>
-      <StatusBar style="auto" />
+      <Image source={require('@/assets/logos/buy-it-logo.png')} style={styles.logo} />
+
+      <Shop />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 24,
   },
-  text: {
-    color: '#000',
-    fontSize: 20,
-    fontWeight: 'bold',
+  logo: {
+    width: 140,
+    height: 280,
+    resizeMode: 'contain',
+    alignSelf: 'center',
   },
 });
