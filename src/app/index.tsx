@@ -1,29 +1,31 @@
-import { Image, StyleSheet, View } from 'react-native';
-import { Shop } from './Shop';
+import { Image, StyleSheet, View } from 'react-native'
+import { Home } from './Home'
+
+import logo from '@/assets/logos/buy-it-logo.png'
 
 export function App() {
   return (
     <View style={styles.container}>
-      <Image source={require('@/assets/logos/buy-it-logo.png')} style={styles.logo} />
+      <Image source={logo} style={styles.logo} />
 
-      <Shop />
+      <Home />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#dedede',
     height: '100%',
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    padding: 24,
   },
   logo: {
     width: 140,
-    height: 280,
+    height: 70,
+    marginVertical: 70,
     resizeMode: 'contain',
     alignSelf: 'center',
   },
-});
+})
