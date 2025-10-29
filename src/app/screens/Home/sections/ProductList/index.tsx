@@ -1,7 +1,11 @@
 import { StyleSheet, View } from 'react-native'
-import { FilterStatusButton, OrderStatus } from './components/FilterButton'
-import { FilterCleanerButton } from './components/CleanFiltersButton'
+import {
+  FilterStatusButton,
+  OrderStatus,
+} from './components/FilterStatusButton'
+import { FilterCleanerButton } from './components/FilterCleanerButton'
 import { useState } from 'react'
+import { Divider } from '@/components/ui/Divider'
 
 export interface OrderListActiveFilter {
   pending: boolean
@@ -18,11 +22,9 @@ export function OrderList() {
     useState<OrderListActiveFilter>(initialActiveFilters)
 
   const handleFilterPress = (type: OrderStatus) => {
-    setFilters((prev) => {
-      if (prev[type]) {
-        return prev
-      }
+    if (filters[type]) return
 
+    setFilters((prev) => {
       return {
         ...initialActiveFilters,
         [type]: !prev[type],
@@ -53,6 +55,8 @@ export function OrderList() {
 
         <FilterCleanerButton onPress={handleCleanFilters} />
       </View>
+
+      <Divider dir="horizontal" containerStyle={{ paddingHorizontal: 24 }} />
     </View>
   )
 }
@@ -78,6 +82,6 @@ const styles = StyleSheet.create({
   filter: {
     display: 'flex',
     flexDirection: 'row',
-    gap: 12,
+    gap: 8,
   },
 })

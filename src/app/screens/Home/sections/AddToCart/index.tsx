@@ -5,9 +5,9 @@ import { StyleSheet, View } from 'react-native'
 export function AddToCart() {
   return (
     <View style={styles.container}>
-      <InputText placeholder="What do you want to buy?" />
+      <InputText placeholder="O que deseja comprar?" />
 
-      <Button title="Add to cart" />
+      <Button title="Adicionar ao carrinho" />
     </View>
   )
 }

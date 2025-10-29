@@ -56,7 +56,7 @@ export function FilterStatusButton({
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    padding: 8,
   },
   filter: {
     display: 'flex',
@@ -73,9 +73,11 @@ const styles = StyleSheet.create({
   title: {
     color: '#979797',
     fontWeight: 'normal',
+    fontSize: 13,
   },
   activeTitle: {
     color: '#000',
     fontWeight: '500',
+    fontSize: 13,
   },
 })

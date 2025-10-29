@@ -7,14 +7,19 @@ import {
 
 export function FilterCleanerButton(props: TouchableOpacityProps) {
   return (
-    <TouchableOpacity style={styles.button} {...props}>
-      <Text>Limpar</Text>
+    <TouchableOpacity style={styles.container} {...props}>
+      <Text style={styles.title}>Limpar</Text>
     </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
-  button: {
-    padding: 10,
+  container: {
+    padding: 8,
+  },
+  title: {
+    color: '#979797',
+    fontSize: 12,
+    fontWeight: '500',
   },
 })
