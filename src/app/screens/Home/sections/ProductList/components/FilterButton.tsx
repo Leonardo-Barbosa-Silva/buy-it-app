@@ -1,44 +1,81 @@
+import { CircleCheck, CircleDashed, LucideIcon } from 'lucide-react-native'
 import {
   StyleSheet,
   Text,
   TouchableOpacity,
   TouchableOpacityProps,
+  View,
 } from 'react-native'
 
-export type OrderListFilterType = 'pending' | 'bought'
+export type OrderStatus = 'pending' | 'bought'
+
+interface Filter {
+  title: string
+  Icon: LucideIcon
+}
 
 export interface FilterButtonProps extends TouchableOpacityProps {
-  type: OrderListFilterType
+  type: OrderStatus
   isActive: boolean
 }
 
-export function FilterButton({ type, isActive, ...props }: FilterButtonProps) {
-  const renderTitle = () => {
-    switch (type) {
-      case 'pending':
-        return 'Pendentes'
-      case 'bought':
-        return 'Comprados'
-      default:
-        return ''
-    }
-  }
+const filters: Record<OrderStatus, Filter> = {
+  pending: {
+    title: 'Pendentes',
+    Icon: CircleDashed,
+  },
+  bought: {
+    title: 'Comprados',
+    Icon: CircleCheck,
+  },
+}
+
+export function FilterStatusButton({
+  type,
+  isActive,
+  ...props
+}: FilterButtonProps) {
+  const { title, Icon } = filters[type]
 
   return (
-    <TouchableOpacity style={styles.button} {...props}>
-      <Text style={isActive ? styles.active : {}}>{renderTitle()}</Text>
+    <TouchableOpacity style={styles.container} {...props}>
+      <View style={styles.filter}>
+        <Icon
+          size={16}
+          color={isActive ? styles.activeIcon.color : styles.icon.color}
+          strokeWidth={isActive ? 3 : 1}
+        />
+
+        <Text style={isActive ? styles.activeTitle : styles.title}>
+          {title}
+        </Text>
+      </View>
     </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
-  button: {
+  container: {
     padding: 10,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ccc',
   },
-  active: {
-    color: 'red',
+  filter: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  icon: {
+    color: '#979797',
+  },
+  activeIcon: {
+    color: '#000',
+  },
+  title: {
+    color: '#979797',
+    fontWeight: 'normal',
+  },
+  activeTitle: {
+    color: '#000',
+    fontWeight: '500',
   },
 })

@@ -1,50 +1,57 @@
 import { StyleSheet, View } from 'react-native'
-import { FilterButton, OrderListFilterType } from './components/FilterButton'
-import { CleanFiltersButton } from './components/CleanFiltersButton'
+import { FilterStatusButton, OrderStatus } from './components/FilterButton'
+import { FilterCleanerButton } from './components/CleanFiltersButton'
 import { useState } from 'react'
 
-export interface OrderListFilter {
+export interface OrderListActiveFilter {
   pending: boolean
   bought: boolean
 }
 
-const initialFilters: OrderListFilter = {
+const initialActiveFilters: OrderListActiveFilter = {
   pending: false,
   bought: false,
 }
 
-export function ProductList() {
-  const [filters, setFilters] = useState<OrderListFilter>(initialFilters)
+export function OrderList() {
+  const [filters, setFilters] =
+    useState<OrderListActiveFilter>(initialActiveFilters)
 
-  const handleFilterPress = (type: OrderListFilterType) => {
-    setFilters((prev) => ({
-      ...initialFilters,
-      [type]: !prev[type],
-    }))
+  const handleFilterPress = (type: OrderStatus) => {
+    setFilters((prev) => {
+      if (prev[type]) {
+        return prev
+      }
+
+      return {
+        ...initialActiveFilters,
+        [type]: !prev[type],
+      }
+    })
   }
 
   const handleCleanFilters = () => {
-    setFilters(initialFilters)
+    setFilters(initialActiveFilters)
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.filter}>
-          <FilterButton
+          <FilterStatusButton
             type="pending"
             onPress={() => handleFilterPress('pending')}
             isActive={filters.pending}
           />
 
-          <FilterButton
+          <FilterStatusButton
             type="bought"
             onPress={() => handleFilterPress('bought')}
             isActive={filters.bought}
           />
         </View>
 
-        <CleanFiltersButton onPress={handleCleanFilters} />
+        <FilterCleanerButton onPress={handleCleanFilters} />
       </View>
     </View>
   )
@@ -71,6 +78,6 @@ const styles = StyleSheet.create({
   filter: {
     display: 'flex',
     flexDirection: 'row',
-    gap: 10,
+    gap: 12,
   },
 })

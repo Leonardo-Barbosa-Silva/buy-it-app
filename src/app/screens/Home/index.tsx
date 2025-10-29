@@ -1,13 +1,13 @@
 import { StyleSheet, View } from 'react-native'
 import { AddToCart } from './sections/AddToCart/index'
-import { ProductList } from './sections/ProductList'
+import { OrderList } from './sections/ProductList'
 
 export function Home() {
   return (
     <View style={styles.container}>
       <AddToCart />
 
-      <ProductList />
+      <OrderList />
     </View>
   )
 }
