@@ -1,11 +1,11 @@
 import { StyleSheet, View } from 'react-native'
-import { SearchOrders } from './components/SearchOrders'
+import { AddToCart } from './components/AddToCart/index'
 import { ProductList } from './components/ProductList'
 
 export function Home() {
   return (
     <View style={styles.container}>
-      <SearchOrders />
+      <AddToCart />
 
       <ProductList />
     </View>
