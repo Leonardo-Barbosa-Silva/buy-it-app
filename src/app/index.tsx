@@ -1,5 +1,5 @@
 import { Image, StyleSheet, View } from 'react-native'
-import { Home } from './Home'
+import { Home } from './screens/Home'
 
 import logo from '@/assets/logos/buy-it-logo.png'
 

@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native'
-import { FilterButton, OrderListFilterType } from './FilterButton'
-import { CleanFiltersButton } from './CleanFiltersButton'
+import { FilterButton, OrderListFilterType } from './components/FilterButton'
+import { CleanFiltersButton } from './components/CleanFiltersButton'
 import { useState } from 'react'
 
 export interface OrderListFilter {

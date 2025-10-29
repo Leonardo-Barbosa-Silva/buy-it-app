@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native'
-import { AddToCart } from './components/AddToCart/index'
-import { ProductList } from './components/ProductList'
+import { AddToCart } from './sections/AddToCart/index'
+import { ProductList } from './sections/ProductList'
 
 export function Home() {
   return (
